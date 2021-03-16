@@ -1,6 +1,9 @@
 const express = require('express');
 const path = require('path');
+const fs = require('fs')
 
+
+const savedNotes = fs.readFileSync("/Users/vron/Desktop/Meditations-Journal/Develop/db/db.json", 'utf8');
 
 const app = express();
 const PORT = 3001;
