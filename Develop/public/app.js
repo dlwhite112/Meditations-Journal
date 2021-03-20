@@ -8,7 +8,7 @@ const api = require('../routes/apiRoutes')
 // const newNotes = []
 
 const app = express();
-const PORT = process.env.PORT || 3004;
+const PORT = process.env.PORT || 3005;
 
 // Sets up the Express app to handle data parsing
 app.use(express.json());
