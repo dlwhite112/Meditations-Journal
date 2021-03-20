@@ -1,21 +1,26 @@
 const express = require('express');
+const html = require('../routes/htmlRoutes');
+const api = require('../routes/apiRoutes')
+// const fs = require('fs')
 
-const fs = require('fs')
 
-
-const savedNotes = fs.readFileSync("/Users/vron/Desktop/Meditations-Journal/Develop/db/db.json", 'utf8');
-const newNotes = []
+// const savedNotes = fs.readFileSync("/Users/vron/Desktop/Meditations-Journal/Develop/db/db.json", 'utf8');
+// const newNotes = []
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3004;
 
 // Sets up the Express app to handle data parsing
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+//please work
+app.use(express.static('public'));
 
+// app.use("./index.html", html);
 
-
+app.use(html);
+app.use(api);
 
    
 
