@@ -4,8 +4,8 @@ const util = require("util");
 const { v4: uuidv4 } = require("uuid");
 const path = require('path');
 
-const readFile = util.promisify(fs.readFileSync);
-const writeFile = util.promisify(fs.writeFile);
+// const readFile = util.promisify(fs.readFileSync);
+// const writeFile = util.promisify(fs.writeFile);
 
 // const myFile = fs.readFileSync("./db.json", "utf8")
 // console.log(myFile)
@@ -16,26 +16,29 @@ class Storage {
     return fs.readFileSync("./Develop/db/db.json", "utf8");
   }
   writeNote(input) {
-    return writeFile("./Develop/db/db.json", JSON.stringify(input));
+    return fs.writeFileSync("./Develop/db/db.json", JSON.stringify(input));
   }
-  getNotes() {
-    return this.readNote().then((notes) => {
-      let noteParser;
-      try {
-        noteParser = [].concat(JSON.parse(notes));
-      } catch (error) {
-        noteParser = [];
-      }
-      return noteParser;
-    });
-  }
-  addNote(note) {
-    const { title, text } = note;
-    const newNote = { title, text, id: uuidv4() };
-    return this.getNotes()
-      .then((notes) => [...notes, newNote])
-      .then((updateNote) => this.writeNote(updateNote))
-      .then(() => newNote);
+  // getNotes() {
+  //   return this.readNote().then((notes) => {
+  //     let noteParser;
+  //     try {
+  //       noteParser = [].concat(JSON.parse(notes));
+  //     } catch (error) {
+  //       noteParser = [];
+  //     }
+  //     return noteParser;
+  //   });
+  // }
+  // addNote(note) {
+  //   const { title, text } = note;
+  //   const newNote = { title, text, id: uuidv4() };
+  //   return this.getNotes()
+  //     .then((notes) => [...notes, newNote])
+  //     .then((updateNote) => this.writeNote(updateNote))
+  //     .then(() => newNote);
+  // }
+  id(){
+   return `${uuidv4()}`;
   }
 }
 
