@@ -13,10 +13,10 @@ class Storage {
     
   readNote() {
     //utf8 takes the json and renders as utf8 char coding for html
-    return fs.readFileSync("../db/db.json", "utf8");
+    return fs.readFileSync("./Develop/db/db.json", "utf8");
   }
   writeNote(input) {
-    return writeFile("../db/db.json", JSON.stringify(input));
+    return writeFile("./Develop/db/db.json", JSON.stringify(input));
   }
   getNotes() {
     return this.readNote().then((notes) => {
