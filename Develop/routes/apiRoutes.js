@@ -10,6 +10,13 @@ router.get("/notes", (req, res) => {
     res.end(data);
   });
 });
+router.get("/api/notes/:id", (req, res) => {
+  fs.readFile(`${__dirname}/../db/db.json`, (err, data) => {
+    if (err) throw err;
+    res.writeHead(200, { "Content-Type": "text/html" });
+    res.end(data);
+  });
+});
 
 // router.delete("/notes/:id", (req, res) => {
 //   const note = req.params.id;
